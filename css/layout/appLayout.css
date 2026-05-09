@@ -1,0 +1,104 @@
+#app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+#main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    transition: margin-left 0.3s ease;
+}
+
+#topbar {
+    height: var(--topbar-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.topbar-left, .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dropdown {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 8px;
+    outline: none;
+}
+
+#chat-container {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+#welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+#welcome-screen h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--text-secondary);
+}
+
+/* Flashy Banner Styling */
+.flashy-banner {
+    background: var(--flashy-bg);
+    padding: 2px;
+    border-radius: 16px;
+    margin-top: 20px;
+    animation: pulse 3s infinite;
+}
+
+.flashy-banner p {
+    background-color: var(--bg-primary);
+    padding: 20px 30px;
+    border-radius: 14px 14px 0 0;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.btn-flashy {
+    display: block;
+    background-color: #fff;
+    color: #000;
+    padding: 12px;
+    border-radius: 0 0 14px 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+.btn-flashy:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px rgba(164, 140, 255, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(164, 140, 255, 0.8); }
+    100% { box-shadow: 0 0 10px rgba(164, 140, 255, 0.4); }
+}
