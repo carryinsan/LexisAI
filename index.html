@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexisAI</title>
+    
+    <link rel="stylesheet" href="css/core/reset.css">
+    <link rel="stylesheet" href="css/core/variables.css">
+    <link rel="stylesheet" href="css/layout/appLayout.css">
+    <link rel="stylesheet" href="css/layout/sidebar.css">
+    <link rel="stylesheet" href="css/layout/bottombar.css">
+    
+    <link rel="stylesheet" href="css/components/chat.css"> <link rel="stylesheet" href="css/pages/modes.css">
+    <link rel="stylesheet" href="css/components/cards.css">
+    <link rel="stylesheet" href="css/components/accordions.css">
+</head>
+<body>
+    <div id="app-container">
+        <aside id="sidebar" class="sidebar-collapsed">
+            <div class="sidebar-header">
+                <button id="new-chat-btn" class="btn-primary">+ New Chat</button>
+            </div>
+            <div class="sidebar-content">
+                <div class="chat-history-section">
+                    <h3>Recent</h3>
+                    <ul id="chat-history-list">
+                        </ul>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <button id="settings-btn" class="btn-icon">⚙️ Settings</button>
+            </div>
+        </aside>
+
+        <main id="main-content">
+            <header id="topbar">
+                <div class="topbar-left">
+                    <button id="hamburger-menu" class="btn-icon">☰</button>
+                    <h1 class="app-title">LexisAI</h1>
+                </div>
+                <div class="topbar-right">
+                    <select id="model-selector" class="dropdown">
+                        <option value="oracle" selected>Oracle (Deep Think)</option>
+                        <option value="flux">Flux (Thinking)</option>
+                        <option value="spark">Spark (Fast)</option>
+                    </select>
+                    <select id="mode-selector" class="dropdown">
+                        <option value="general" selected>General</option>
+                        <option value="learn">Learn</option>
+                        <option value="deep_research">Deep Research</option>
+                        <option value="template">Template</option>
+                        <option value="coding">Coding</option>
+                        <option value="plan">Plan</option>
+                    </select>
+                </div>
+            </header>
+
+            <div id="chat-container">
+                <div id="welcome-screen" class="welcome-active">
+                    <h2>Ask Lexis</h2>
+                    
+                    <div class="flashy-banner">
+                        <p>✨ Want to create custom template FREE?? Check out our new website ✨</p>
+                        <a href="https://templates-psi-six.vercel.app" target="_blank" class="btn-flashy">Visit Now</a>
+                    </div>
+                </div>
+                
+                <div id="messages-wrapper"></div>
+            </div>
+
+            <footer id="bottombar">
+                <div class="mode-inputs-container"></div>
+                
+                <div class="input-container">
+                    <button id="upload-btn" class="btn-icon" title="Upload PDF, Image, or Docs">📎</button>
+                    <textarea id="prompt-input" placeholder="Ask Lexis..." rows="1"></textarea>
+                    <button id="send-btn" class="btn-icon send-btn">➤</button>
+                </div>
+                <div class="footer-text">LexisAI can make mistakes. Consider verifying important information.</div>
+            </footer>
+        </main>
+    </div>
+    
+    <script>
+        // Toggle Sidebar
+        document.getElementById('hamburger-menu').addEventListener('click', () => {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('sidebar-collapsed');
+        });
+    </script>
+
+    <script type="module" src="js/app.js"></script>
+
+    <script type="module" src="js/systemEnhancer.js"></script>
+</body>
+</html>
