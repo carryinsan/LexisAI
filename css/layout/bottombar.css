@@ -1,0 +1,48 @@
+#bottombar {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-secondary);
+    border-radius: 24px;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+}
+
+.input-container:focus-within {
+    border-color: var(--accent-color);
+}
+
+#prompt-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1rem;
+    padding: 10px;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+.btn-icon:hover { background-color: var(--border-color); }
+
+.send-btn { color: var(--accent-color); }
+
+.footer-text {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 10px;
+}
