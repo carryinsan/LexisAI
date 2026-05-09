@@ -1,0 +1,51 @@
+/* css/components/chat.css */
+.message {
+    display: flex;
+    margin-bottom: 24px;
+    width: 100%;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message.user .message-content {
+    background-color: var(--bg-secondary);
+    border-radius: 18px 18px 0 18px;
+    padding: 12px 18px;
+    max-width: 80%;
+}
+
+.message.ai {
+    justify-content: flex-start;
+}
+
+.message.ai .message-content {
+    background-color: transparent;
+    padding: 12px 0;
+    max-width: 100%;
+}
+
+.thinking-indicator {
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 3px solid var(--accent-color);
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(164, 140, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--accent-color);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
