@@ -1,0 +1,35 @@
+/* css/pages/modes.css */
+.mode-inputs-container {
+    display: none; /* Hidden by default */
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 10px auto;
+    background-color: var(--bg-secondary);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.mode-inputs-container.active {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.custom-input {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.custom-input:focus {
+    border-color: var(--accent-color);
+}
+
+.full-width {
+    grid-column: span 2;
+}
