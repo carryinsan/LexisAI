@@ -1,0 +1,19 @@
+:root {
+    /* Colors */
+    --bg-primary: #1e1e20;
+    --bg-secondary: #28282a;
+    --text-primary: #e3e3e3;
+    --text-secondary: #a0a0a5;
+    --accent-color: #a48cff;
+    --accent-hover: #b8a6ff;
+    --border-color: #38383a;
+    
+    /* Flashy Banner Colors */
+    --flashy-bg: linear-gradient(135deg, #ff6b6b, #845ef7, #339af0);
+    
+    /* Sizing */
+    --sidebar-width: 260px;
+    --topbar-height: 60px;
+    --border-radius: 12px;
+    --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
