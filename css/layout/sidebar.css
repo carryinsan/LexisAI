@@ -5,12 +5,16 @@
     flex-direction: column;
     transition: transform 0.3s ease, width 0.3s ease;
     border-right: 1px solid var(--border-color);
+    overflow: hidden; /* STOPS TEXT BLEEDING */
+    white-space: nowrap; /* KEEPS TEXT FROM WRAPPING */
+    flex-shrink: 0;
+    z-index: 1000;
 }
 
 #sidebar.sidebar-collapsed {
     width: 0;
-    transform: translateX(-100%);
     border: none;
+    padding: 0;
 }
 
 .sidebar-header { padding: 20px; }
@@ -24,13 +28,13 @@
     border-radius: 20px;
     transition: background 0.2s;
 }
-.btn-primary:hover { background-color: var(--border-color); }
 
 .sidebar-content {
     flex: 1;
     overflow-y: auto;
     padding: 0 20px;
 }
+
 .chat-history-section h3 {
     font-size: 0.8rem;
     color: var(--text-secondary);
@@ -38,3 +42,19 @@
 }
 
 .sidebar-footer { padding: 20px; border-top: 1px solid var(--border-color); }
+
+/* Mobile Responsiveness for Sidebar */
+@media (max-width: 768px) {
+    #sidebar {
+        position: absolute;
+        height: 100%;
+        left: 0;
+        top: 0;
+        width: 260px;
+        box-shadow: 2px 0 15px rgba(0,0,0,0.5);
+    }
+    #sidebar.sidebar-collapsed {
+        transform: translateX(-100%);
+        width: 260px; /* Keeps shape but hides off-screen */
+    }
+}
