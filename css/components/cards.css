@@ -1,0 +1,31 @@
+/* Premium Card Design for Planning Mode */
+.plan-card {
+    background: rgba(40, 40, 42, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(164, 140, 255, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px 0 rgba(164, 140, 255, 0.15);
+    border-color: rgba(164, 140, 255, 0.5);
+}
+
+.plan-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.plan-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
