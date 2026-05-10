@@ -2,7 +2,10 @@
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 15px 20px;
+    flex-shrink: 0;
+    background-color: var(--bg-primary);
+    z-index: 10;
 }
 
 .input-container {
@@ -10,12 +13,8 @@
     align-items: center;
     background-color: var(--bg-secondary);
     border-radius: 24px;
-    padding: 10px 15px;
+    padding: 8px 15px;
     border: 1px solid var(--border-color);
-}
-
-.input-container:focus-within {
-    border-color: var(--accent-color);
 }
 
 #prompt-input {
@@ -28,17 +27,19 @@
     resize: none;
     outline: none;
     font-family: inherit;
+    min-height: 40px;
 }
 
 .btn-icon {
     font-size: 1.2rem;
     padding: 8px;
     border-radius: 50%;
-    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.btn-icon:hover { background-color: var(--border-color); }
 
-.send-btn { color: var(--accent-color); }
+.send-btn { color: var(--accent-color); font-weight: bold; }
 
 .footer-text {
     text-align: center;
