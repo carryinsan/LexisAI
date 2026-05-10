@@ -24,6 +24,24 @@
             background-color: var(--bg-primary); 
             border-top: 1px solid var(--border-color);
         }
+        /* File Preview Styling */
+        #file-preview-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 15px 10px 15px;
+            font-size: 0.75rem;
+            color: var(--accent-color);
+        }
+        .file-badge {
+            background: var(--bg-secondary);
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
     </style>
 </head>
 <body>
@@ -82,8 +100,13 @@
 
             <footer id="bottombar">
                 <div class="mode-inputs-container"></div>
+                
+                <div id="file-preview-area"></div>
+
                 <div class="input-container">
-                    <button id="upload-btn" class="btn-icon" title="Upload Docs">📎</button>
+                    <input type="file" id="hidden-file-input" multiple accept=".pdf,.doc,.docx,image/*" style="display: none;">
+                    
+                    <button id="upload-btn" class="btn-icon" title="Upload Docs/Images">📎</button>
                     <textarea id="prompt-input" placeholder="Ask Lexis..." rows="1"></textarea>
                     <button id="send-btn" class="btn-icon send-btn">➤</button>
                 </div>
@@ -108,6 +131,65 @@
             if (window.innerWidth <= 768 && !sidebar.classList.contains('sidebar-collapsed')) {
                 sidebar.classList.add('sidebar-collapsed');
             }
+        });
+
+        // --- File Upload Logic ---
+        const uploadBtn = document.getElementById('upload-btn');
+        const fileInput = document.getElementById('hidden-file-input');
+        const previewArea = document.getElementById('file-preview-area');
+
+        uploadBtn.addEventListener('click', () => {
+            fileInput.click(); // Triggers the native file picker
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            let docsCount = 0;
+            let imgCount = 0;
+            let validFiles = [];
+
+            // Enforce constraints
+            files.forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    imgCount++;
+                    if(imgCount <= 3) validFiles.push(file);
+                } else if (file.type === 'application/pdf' || file.name.endsWith('.doc') || file.name.endsWith('.docx')) {
+                    docsCount++;
+                    if(docsCount <= 2) validFiles.push(file);
+                }
+            });
+
+            if (imgCount > 3 || docsCount > 2) {
+                alert('Limit Reached: You can only attach up to 3 Images OR up to 2 PDFs/Docs. Extra files were ignored.');
+            }
+
+            // Replace file input data with strictly valid files
+            const dt = new DataTransfer();
+            validFiles.forEach(f => dt.items.add(f));
+            fileInput.files = dt.files;
+
+            // Show previews above text box
+            previewArea.innerHTML = '';
+            validFiles.forEach(f => {
+                const badge = document.createElement('div');
+                badge.className = 'file-badge';
+                // Shorten name if too long
+                const displayName = f.name.length > 15 ? f.name.substring(0, 15) + '...' : f.name;
+                const icon = f.type.startsWith('image/') ? '🖼️' : '📄';
+                badge.innerHTML = `${icon} ${displayName}`;
+                previewArea.appendChild(badge);
+            });
+        });
+        
+        // Clear attachments after sending
+        document.getElementById('send-btn').addEventListener('click', () => {
+            setTimeout(() => {
+                // Allows app.js to grab it first, then clears UI
+                if(document.getElementById('prompt-input').value === '') {
+                   previewArea.innerHTML = '';
+                   fileInput.value = '';
+                }
+            }, 100);
         });
     </script>
 
